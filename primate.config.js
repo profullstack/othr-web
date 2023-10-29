@@ -8,6 +8,7 @@ import esbuild from '@primate/esbuild';
 // import liveview from '@primate/liveview';
 import { config } from 'dotenv-flow';
 import { Logger } from 'primate';
+import { handlebars } from "@primate/frontend";
 
 config();
 
@@ -37,9 +38,13 @@ export default {
 	http: {
 		port,
 		csp: {
-			'script-src': "'unsafe-inline' 'self' plausible.io googletagmanager.com",
-			'style-src': "'self' *.tile.openstreetmap.org unpkg.com",
-			'img-src': "'self' *.tile.openstreetmap.org unpkg.com"
+			'script-src':
+				"'unsafe-inline' 'self' 'unsafe-eval' plausible.io *.googletagmanager.com",
+			'style-src':
+				"'unsafe-inline' 'self' *.tile.openstreetmap.org unpkg.com *.arcgisonline.com",
+			'img-src':
+				"'unsafe-inline' 'self' https: data: *.tile.openstreetmap.org unpkg.com *.arcgisonline.com",
+			'default-src': '*'
 		}
 	},
 	build: {
@@ -55,6 +60,7 @@ export default {
 		}
 	},
 	modules: [
+		handlebars(),
 		svelte(),
 		// liveview(),
 		store({
