@@ -101,23 +101,23 @@ class SocialShare extends HTMLElement {
 
 		this.share(
 			'.twitter',
-			"javascript:(async () => {const title = encodeURIComponent(document.title); const url = encodeURIComponent(window.location.href); const tags = [...document.querySelectorAll('.tags li a')].slice(0,4).map(t => t.innerText.trim().replace(/-/g, '')).map(t => `${encodeURIComponent('#'+t)}`).join(' '); console.log(tags); window.open(`https://twitter.com/intent/tweet?text=${title}+${tags}&url=${url}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; const tags = [...document.querySelectorAll('.tags li a')].slice(0,4).map(t => t.innerText.trim().replace(/-/g, '')).map(t => `${encodeURIComponent('#'+t)}`).join(' '); console.log(tags); window.open(`https://twitter.com/intent/tweet?text=${title}+${tags}&url=${url}`, '_blank'); })();"
 		);
 		this.share(
 			'.reddit',
-			"javascript:(async () => {const title = encodeURIComponent(document.title); const url = encodeURIComponent(window.location.href); window.open(`https://www.reddit.com/submit?url=${url}&title=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://www.reddit.com/submit?url=${url}&title=${title}`, '_blank'); })();"
 		);
 		this.share(
 			'.hackernews',
-			"javascript:(async () => {const title = encodeURIComponent(document.title); const url = encodeURIComponent(window.location.href); window.open(`https://news.ycombinator.com/submitlink?u=${url}&t=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://news.ycombinator.com/submitlink?u=${url}&t=${title}`, '_blank'); })();"
 		);
 		this.share(
 			'.tildes',
-			"javascript:(async () => {const title = encodeURIComponent(document.title); const url = encodeURIComponent(window.location.href); window.open(`https://tildes.net/~tech/new_topic?link=${url}&title=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://tildes.net/~tech/new_topic?link=${url}&title=${title}`, '_blank'); })();"
 		);
 		this.share(
 			'.headcycle',
-			"javascript:(async () => {const title = encodeURIComponent(document.title); const url = encodeURIComponent(window.location.href); window.open(`http://headcycle.com/submit?v=3&tab_selected=link;url=${url};title=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`http://headcycle.com/submit?v=3&tab_selected=link;url=${url};title=${title}`, '_blank'); })();"
 		);
 		this.share(
 			'.facebook',
@@ -129,93 +129,93 @@ class SocialShare extends HTMLElement {
 		);
 		this.share(
 			'.whatsapp',
-			 "javascript:(async () => {const title = encodeURIComponent(document.title); const url = encodeURIComponent(window.location.href); window.open(`https://api.whatsapp.com/send?text=${title}%20${url}`, '_blank'); })()"
+			 "javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://api.whatsapp.com/send?text=${title}%20${url}`, '_blank'); })()"
 		);
 		this.share(
 			'.telegram',
-			"javascript:(async () => {const title = encodeURIComponent(document.title); const url = encodeURIComponent(window.location.href); window.open(`https://t.me/share/url?url=${url}&text=${title}`, '_blank'); })()"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://t.me/share/url?url=${url}&text=${title}`, '_blank'); })()"
 		)
 		this.share(
 			'.tiktok',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.tiktok.com/upload/?url=${url}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.tiktok.com/upload/?url=${url}`, '_blank'); })()"
 		);
 		this.share(
 			'.snapchat',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`snapchat://add?url=${url}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`snapchat://add?url=${url}`, '_blank'); })()"
 		);
 		this.share(
 			'.instagram',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`instagram://camera?url=${url}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`instagram://camera?url=${url}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.sitejabber',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.sitejabber.com/reviews/${new URL(window.location.href).hostname}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.sitejabber.com/reviews/${new URL(window.location.href).hostname}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.trustedreviews',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://trustedrevie.ws/reviews/${new URL(window.location.href).hostname}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://trustedrevie.ws/reviews/${new URL(window.location.href).hostname}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.trustpilot',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.trustpilot.com/review/${new URL(window.location.href).hostname}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.trustpilot.com/review/${new URL(window.location.href).hostname}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.linkedin',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.tumblr',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.tumblr.com/share/link?url=${url}&name=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.tumblr.com/share/link?url=${url}&name=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.pocket',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://getpocket.com/save?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://getpocket.com/save?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.buffer',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://buffer.com/add?url=${url}&text=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://buffer.com/add?url=${url}&text=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.instapaper',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.instapaper.com/hello2?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.instapaper.com/hello2?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.evernote',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.evernote.com/clip.action?url=?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.evernote.com/clip.action?url=?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.email',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`mailto:?body=${url}&subject=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`mailto:?body=${url}&subject=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.weibo',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`http://service.weibo.com/share/share.php?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`http://service.weibo.com/share/share.php?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.xing',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://www.xing.com/spi/shares/new?url=${url}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.xing.com/spi/shares/new?url=${url}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.vk',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://vk.com/share.php?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://vk.com/share.php?url=${url}&title=${encodeURIComponent(document.title)}`, '_blank'); })()"
 		);
 
 		this.share(
 			'.flipboard',
-			"javascript:(async () => {const url = encodeURIComponent(window.location.href); window.open(`https://share.flipboard.com/bookmarklet/popout?v=2&title=${encodeURIComponent(document.title)}&url=${url}`, '_blank'); })()"
+			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://share.flipboard.com/bookmarklet/popout?v=2&title=${encodeURIComponent(document.title)}&url=${url}`, '_blank'); })()"
 		);
 	}
 }

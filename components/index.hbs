@@ -1,7 +1,32 @@
-<h1>Welcome to {{APP_NAME}}!</h1>
-
-<p>{{APP_DESCRIPTION}}</p>
-
+<h1>
+	Welcome to
+	{{APP_NAME}}
+	!
+</h1>
+<p>
+	{{APP_DESCRIPTION}}
+</p>
 <sponsor-list></sponsor-list>
+<input type="text" id="url" placeholder="Enter URL" />
+<button>
+	Fetch
+</button>
+<br />
+<input type="text" id="title" placeholder="Enter title" />
 <social-share></social-share>
 <sponsor-list></sponsor-list>
+<script>
+	async function getTitle(e) {
+        e.preventDefault();
+
+        const url = document.getElementById('url').value;
+        const res = await fetch('/title?url='+encodeURIComponent(url));
+        const data = await res.json();
+        const { title } = data;
+
+        document.getElementById('title').value = title;
+    }
+
+	const btn = document.querySelector('button');
+    btn.addEventListener('click', getTitle)
+</script>
