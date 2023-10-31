@@ -15,7 +15,7 @@
     "deploy": "./bin/deploy.sh"
   },
   "dependencies": {
-    "@primate/esbuild": "^0.13.0",
+    "@primate/esbuild": "^0.13.1",
     "@primate/frontend": "^0.6.0",
     "@primate/liveview": "^0.7.0",
     "@primate/session": "^0.13.0",
@@ -30,7 +30,7 @@
     "prettier-plugin-svelte": "^3.0.3",
     "primate": "^0.25.0",
     "runtime-compat": "^0.32.3",
-    "surrealdb.js": "^0.9.1",
+    "surrealdb.js": "^0.10.1",
     "svelte": "^4.2.2",
     "twilio": "^4.19.0"
   },
