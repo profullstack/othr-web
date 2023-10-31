@@ -70,6 +70,7 @@ class SocialShare extends HTMLElement {
     </style>
     <nav class="share">
         <strong>Share on social media</strong>
+		<a href="#" class="stacker-news">stacker.news</a>
         <a href="#" class="twitter">twitter</a>
         <a href="#" class="reddit">reddit</a>
         <a href="#" class="hackernews">hackernews</a>
@@ -99,6 +100,10 @@ class SocialShare extends HTMLElement {
     </nav>
 `;
 
+		this.share(
+			'.stacker-news',
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://stacker.news/~tech/post?type=link&url=${url}&title=${title}`, '_blank'); })();"
+		);
 		this.share(
 			'.twitter',
 			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; const tags = [...document.querySelectorAll('.tags li a')].slice(0,4).map(t => t.innerText.trim().replace(/-/g, '')).map(t => `${encodeURIComponent('#'+t)}`).join(' '); console.log(tags); window.open(`https://twitter.com/intent/tweet?text=${title}+${tags}&url=${url}`, '_blank'); })();"
