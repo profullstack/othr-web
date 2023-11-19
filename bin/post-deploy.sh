@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 cd "$(dirname "$0")/.."
 . $HOME/.bashrc
@@ -19,14 +19,15 @@ if [ -d "$HOME/www/${name}/${project}" ]; then
     node -v
     npm -v
     npm i
-		curl --proto '=https' --tlsv1.2 -sSf https://install.surrealdb.com | sh -s -- --nightl
-
+		# curl --proto '=https' --tlsv1.2 -sSf https://install.surrealdb.com | sh -s -- --nightl
+    surreal upgrade --nightly
     # run migrations
     ./migrations/users.sh
     # ./migrations/deals.sh
     # ./migrations/comments.sh
     ./migrations/links.sh
     ./migrations/apikeys.sh
+    ./migrations/nostrusers.sh
     # ./migrations/applications.sh
     # ./migrations/services.sh
     # ./migrations/inquiries.sh

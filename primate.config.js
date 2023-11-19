@@ -1,10 +1,11 @@
-import { svelte } from "@primate/frontend";
-import store from "@primate/store";
-import { surrealdb } from "@primate/store";
-import types from "@primate/types";
-import session from "@primate/session";
-import ws from "@primate/ws";
-import esbuild from "@primate/esbuild";
+import { svelte } from '@primate/frontend';
+import store from '@primate/store';
+import { surrealdb } from '@primate/store';
+import types from '@primate/types';
+import session from '@primate/session';
+import ws from '@primate/ws';
+import { esbuild } from '@primate/build';
+// import liveview from '@primate/liveview';
 import { config } from 'dotenv-flow';
 import { Logger } from 'primate';
 import { handlebars } from "@primate/frontend";
@@ -12,18 +13,19 @@ import { handlebars } from "@primate/frontend";
 config();
 
 const {
-  PORT: port,
-  DB_USER: username,
-  DB_PASS: password,
-  DB_HOST: host,
-  DB_NS: namespace,
-  DB_DB: database,
-  DB_PORT: db_port,
-  APP_DOMAIN,
-  GOOGLE_ANALYTICS_ID,
-  APP_NAME,
-  APP_SHORT_NAME,
-  APP_DESCRIPTION,
+	PORT: port,
+	DB_USER: username,
+	DB_PASS: password,
+	DB_HOST: host,
+	DB_NS: namespace,
+	DB_DB: database,
+	DB_PORT: db_port,
+	APP_DOMAIN,
+	GOOGLE_ANALYTICS_ID,
+	GOOGLE_ADS_ID,
+	APP_NAME,
+	APP_SHORT_NAME,
+	APP_DESCRIPTION
 } = process.env;
 
 console.log(host, db_port);
@@ -37,6 +39,7 @@ export default {
 	http: {
 		port,
 		csp: {
+			'default-src': '*',
 			'script-src': "'unsafe-inline' 'self' 'unsafe-eval' *",
 			'style-src': "'unsafe-inline' 'self' *",
 			'img-src': "'unsafe-inline' 'self' *"
@@ -49,6 +52,7 @@ export default {
 				contents
 					.replaceAll('APP_DOMAIN', APP_DOMAIN)
 					.replaceAll('GOOGLE_ANALYTICS_ID', GOOGLE_ANALYTICS_ID)
+					.replaceAll('GOOGLE_ADS_ID', GOOGLE_ADS_ID)
 					.replaceAll('APP_NAME', APP_NAME)
 					.replaceAll('APP_SHORT_NAME', APP_SHORT_NAME)
 					.replaceAll('APP_DESCRIPTION', APP_DESCRIPTION)
@@ -73,7 +77,10 @@ export default {
 		session(),
 		ws(),
 		esbuild({
-			ignores: ['woff', 'ttf', 'png', 'svg']
+			options: {
+				minify: false
+			},
+			ignores: ['woff', 'ttf', 'png', 'jpg', 'jpeg', 'mp4', 'mp3', 'svg']
 		})
 	]
 };

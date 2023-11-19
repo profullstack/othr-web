@@ -4,13 +4,8 @@ const form = (params = {}) => view('login/Form.svelte', { ...params });
 
 export default {
 	get(request) {
-		const { session, query } = request;
+		const { query } = request;
 		const next = query.get('next') || '/dashboard';
-
-		console.log(session.exists);
-		if (session.exists) {
-			return redirect(next);
-		}
 
 		return form({ next });
 	},
@@ -23,7 +18,7 @@ export default {
 		} = store;
 
 		try {
-			const user = request.body.get();
+			const user = request.body.all();
 
 			await Form.validate(user);
 
