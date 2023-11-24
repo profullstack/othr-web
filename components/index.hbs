@@ -16,6 +16,9 @@
 <br />
 <input type="text" id="title" placeholder="Enter title" />
 <social-share></social-share>
+
+<p>get our bookmarklet: <a href="javascript:(async() => {const title = document.title; const url = window.location.href; window.location.href = 'https://othr.us?title='+title+'&url='+url; })();" title="drag to toolbar">othr</a></p>
+
 <h1>Support our sponsors!</h1>
 <sponsor-list></sponsor-list>
 <script>
