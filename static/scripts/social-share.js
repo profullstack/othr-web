@@ -106,7 +106,7 @@ class SocialShare extends HTMLElement {
 		);
 		this.share(
 			'.twitter',
-			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; const tags = [...document.querySelectorAll('.tags li a')].slice(0,4).map(t => t.innerText.trim().replace(/-/g, '')).map(t => `${encodeURIComponent('#'+t)}`).join(' '); console.log(tags); window.open(`https://twitter.com/intent/tweet?text=${title}+${tags}&url=${url}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; const tags = [...document.querySelectorAll('.tags li a')].slice(0,4).map(t => t.innerText.trim().replace(/-/g, '')).map(t => `${encodeURIComponent('#'+t)}`).join(' '); console.log(tags); window.open(`https://twitter.com/compose/tweet?text=${title}+${tags}&url=${url}`, '_blank'); })();"
 		);
 		this.share(
 			'.reddit',

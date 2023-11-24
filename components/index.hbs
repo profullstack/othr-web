@@ -2,34 +2,54 @@
 <script src="/static/scripts/social-share.js" defer></script>
 
 <h1>
-	Welcome to
-	{{APP_NAME}}
-	!
+    Welcome to
+    {{APP_NAME}}
+    !
 </h1>
 <p>
-	{{APP_DESCRIPTION}}
+    {{APP_DESCRIPTION}}
 </p>
-<sponsor-list></sponsor-list>
 <input type="text" id="url" placeholder="Enter URL" />
-<button>
-	Fetch
+<button id="fetch">
+    Fetch
 </button>
 <br />
 <input type="text" id="title" placeholder="Enter title" />
 <social-share></social-share>
+<h1>Support our sponsors!</h1>
 <sponsor-list></sponsor-list>
 <script>
-	async function getTitle(e) {
+    function getURLParams() {
+        const searchParams = new URLSearchParams(window.location.search);
+        return {
+            url: searchParams.get('url'),
+            title: searchParams.get('title')
+        };
+    }
+
+    const { url, title } = getURLParams();
+
+    if (url) {
+        document.getElementById('url').value = url;
+    }
+
+    if (title) {
+        document.getElementById('title').value = title;
+    }
+
+    async function getTitle(e) {
         e.preventDefault();
 
         const url = document.getElementById('url').value;
-        const res = await fetch('/title?url='+encodeURIComponent(url));
+        const res = await fetch('/title?url=' + encodeURIComponent(url));
         const data = await res.json();
         const { title } = data;
 
         document.getElementById('title').value = title;
     }
 
-	const btn = document.querySelector('button');
+    const btn = document.querySelector('button#fetch');
     btn.addEventListener('click', getTitle)
+
+
 </script>
