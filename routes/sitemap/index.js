@@ -2,7 +2,7 @@ import { view } from 'primate';
 import fs from 'fs';
 import path from 'path';
 
-async function loadPosts(tag) {
+async function loadPosts() {
 	const directoryPath = path.join(process.cwd(), 'static', '_posts');
 	console.log(directoryPath);
 	const files = fs.readdirSync(directoryPath);
@@ -21,23 +21,19 @@ async function loadPosts(tag) {
 		}
 	}
 
-	return posts
-		.sort((a, b) => {
-			return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-		})
-		.filter((post) => {
-			return post.tags.indexOf(tag) > -1;
-		});
+	return posts.sort((a, b) => {
+		return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+	});
 }
 
 export default {
-	async get(request) {
+	async get() {
 		const { env } = process;
-		const { APP_NAME, APP_DESCRIPTION } = env;
-		const { session, path, store } = request;
-		const tag = path.get('tag');
-		const posts = await loadPosts(tag);
+		const { APP_DOMAIN } = env;
+		const posts = await loadPosts();
 
-		return view('blog/Index.svelte', { APP_NAME, APP_DESCRIPTION, posts });
+		console.log(APP_DOMAIN);
+
+		return view('Sitemap.hbs', { posts, APP_DOMAIN }, { partial: true });
 	}
 };

@@ -1,4 +1,4 @@
-import { svelte } from '@primate/frontend';
+import { svelte, handlebars } from '@primate/frontend';
 import store from '@primate/store';
 import { surrealdb } from '@primate/store';
 import types from '@primate/types';
