@@ -8,7 +8,6 @@ import { esbuild } from '@primate/build';
 // import liveview from '@primate/liveview';
 import { config } from 'dotenv-flow';
 import { Logger } from 'primate';
-import { handlebars } from "@primate/frontend";
 
 config();
 
