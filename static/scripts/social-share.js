@@ -102,7 +102,7 @@ class SocialShare extends HTMLElement {
 
 		this.share(
 			'.stacker-news',
-			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://stacker.news/~tech/post?type=link&url=${url}&title=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://stacker.news/~news/post?type=link&url=${url}&title=${title}`, '_blank'); })();"
 		);
 		this.share(
 			'.twitter',
