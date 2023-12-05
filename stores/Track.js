@@ -5,16 +5,16 @@ export const actions = ({connection: db}) => {
 		async me() {
 			const me = await db.info();
 			delete me?.password;
-			console.log('me: ', me?.email);
+			console.log('me: ', me);
 			return me;
 		},
 		async visit(id, headers = {}, data) {
 			if (!id) return;
 
 			const me = await this.me();
-			const list = headers.all();
 
-			console.log('visit:', id, list, data, me);
+			console.log('visit:', headers);
+			console.log('id2:', id);
 
 			try {
 				const link = await db.query(
@@ -24,7 +24,7 @@ export const actions = ({connection: db}) => {
 					{
 						id,
 						visit: {
-							headers: list,
+							headers,
 							browser: data ?? undefined,
 							user: me?.id ?? undefined,
 							createdAt: new Date().toISOString(),

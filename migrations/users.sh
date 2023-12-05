@@ -76,11 +76,11 @@ curl -k -L -s --compressed POST \
 	${DB_SQL_URL}
 
 
-DATA="DEFINE SCOPE nostrusers
-  SESSION 14d
---    SIGNUP ( CREATE nostrusers SET username = \$username, email = \$email, phone = \$phone, phonePrefix = \$phonePrefix, firstName = \$firstName, lastName = \$lastName, password = crypto::argon2::generate(\$password), createdAt = \$createdAt, updatedAt = \$updatedAt )
-
-  SIGNIN ( SELECT *, (SELECT * FROM nostrusers) as nostrusers FROM user WHERE nostrpub.id contains \$nostrPub )
+DATA="DEFINE SCOPE allnostrusers
+   SESSION 14d
+   SIGNUP ( CREATE nostrusers SET name = \$name, website = \$website, displayName = \$displayName, about = \$about, lud16 = \$lud16, image = \$image, createdAt = \$created_at, updatedAt = \$updatedAt, banner = \$banner, nip05 = \$nip05 )
+	SESSION 14d
+	SIGNIN ( (SELECT * FROM nostrusers WHERE nip05 = \$nip05) )
 ;"
 
 curl -k -L -s --compressed POST \

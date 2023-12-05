@@ -152,6 +152,7 @@ Personalized Medicine:
     Wearable technology
     Pharmacogenomics
     Telemedicine in personalized care
+
 `
 	.split('\n')
 	.map((item) => item.trim())
