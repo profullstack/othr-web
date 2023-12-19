@@ -1,5 +1,6 @@
 <script src="/static/scripts/sponsors/sponsor-list.js" defer></script>
 <script src="/static/scripts/social-share.js" defer></script>
+<script src="https://zapwebring.com/scripts/components/zap-webring.js" type="module"></script>
 
 <h1>
     Welcome to
@@ -17,10 +18,14 @@
 <input type="text" id="title" placeholder="Enter title" />
 <social-share></social-share>
 
-<p>get our bookmarklet: <a href="javascript:(async() => {const title = document.title; const url = window.location.href; window.location.href = 'https://othr.us?title='+title+'&url='+url; })();" title="drag to toolbar">othr</a></p>
+<p>get our bookmarklet: <a
+        href="javascript:(async() => {const title = document.title; const url = window.location.href; window.location.href = 'https://othr.us?title='+title+'&url='+url; })();"
+        title="drag to toolbar">othr</a></p>
 
 <h1>Support our sponsors!</h1>
 <sponsor-list></sponsor-list>
+<zap-webring></zap-webring>
+
 <script>
     function getURLParams() {
         const searchParams = new URLSearchParams(window.location.search);
@@ -53,6 +58,4 @@
 
     const btn = document.querySelector('button#fetch');
     btn.addEventListener('click', getTitle)
-
-
 </script>
