@@ -2,11 +2,10 @@
 <script src="/static/scripts/social-share.js" defer></script>
 <script src="https://zapwebring.com/scripts/components/zap-webring.js" type="module"></script>
 
-<h1>
-    Welcome to
-    {{APP_NAME}}
-    !
-</h1>
+<nav style="display: flex; justify-content:flex-start; align-items: center;">
+    <img src="/static/logo.png" alt="0" style="width: 12rem; margin-right: .8rem;" />
+    <strong style="font-size: 4rem;">{{APP_NAME}}</strong>
+</nav>
 <p>
     {{APP_DESCRIPTION}}
 </p>
@@ -57,5 +56,5 @@
     }
 
     const btn = document.querySelector('button#fetch');
-    btn.addEventListener('click', getTitle)
+    btn.addEventListener('click', getTitle);
 </script>
