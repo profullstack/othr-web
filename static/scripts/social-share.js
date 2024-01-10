@@ -74,6 +74,7 @@ class SocialShare extends HTMLElement {
         <a href="#" class="twitter">twitter</a>
         <a href="#" class="reddit">reddit</a>
         <a href="#" class="hackernews">hackernews</a>
+		<a href="#" class="linkhut">linkhut</a>
         <a href="#" class="tildes">tildes</a>
         <a href="#" class="headcycle">+headcycle</a>
         <a href="#" class="facebook">facebook</a>
@@ -111,6 +112,10 @@ class SocialShare extends HTMLElement {
 		this.share(
 			'.reddit',
 			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://www.reddit.com/submit?url=${url}&title=${title}`, '_blank'); })();"
+		);
+		this.share(
+			'.linkhut',
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://ln.ht/_/add?url=${url}&title=${title}`, '_blank'); })();"
 		);
 		this.share(
 			'.hackernews',
