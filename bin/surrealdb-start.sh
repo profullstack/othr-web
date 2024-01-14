@@ -6,5 +6,6 @@
 . .env
 . .env.local
 
-PORT=$PORT NODE_ENV=$NODE_ENV npm start
+
+npm run db:start &
 
