@@ -70,6 +70,7 @@ class SocialShare extends HTMLElement {
     </style>
     <nav class="share">
         <strong>Share on social media</strong>
+		<a href="#" class="brisk-news">brisk.news</a>
 		<a href="#" class="stacker-news">stacker.news</a>
         <a href="#" class="twitter">twitter</a>
         <a href="#" class="reddit">reddit</a>
@@ -102,24 +103,28 @@ class SocialShare extends HTMLElement {
 `;
 
 		this.share(
+			'.brisk-news',
+			"javascript:(async () => { const url = document.getElementById('url').value; window.open(`https://brisk.news?url=${url}`, '_blank'); })();"
+		);
+		this.share(
 			'.stacker-news',
-			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://stacker.news/~news/post?type=link&url=${url}&title=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://stacker.news/~news/post?type=link&url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`, '_blank'); })();"
 		);
 		this.share(
 			'.twitter',
-			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; const tags = [...document.querySelectorAll('.tags li a')].slice(0,4).map(t => t.innerText.trim().replace(/-/g, '')).map(t => `${encodeURIComponent('#'+t)}`).join(' '); console.log(tags); window.open(`https://twitter.com/compose/tweet?text=${title}+${tags}&url=${url}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; const tags = [...document.querySelectorAll('.tags li a')].slice(0,4).map(t => t.innerText.trim().replace(/-/g, '')).map(t => `${encodeURIComponent('#'+t)}`).join(' '); console.log(tags); window.open(`https://twitter.com/compose/tweet?text=${encodeURIComponent(title)}+${encodeURIComponent(tags)}&url=${encodeURIComponent(url)}`, '_blank'); })();"
 		);
 		this.share(
 			'.reddit',
-			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://www.reddit.com/submit?url=${url}&title=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`, '_blank'); })();"
 		);
 		this.share(
 			'.linkhut',
-			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://ln.ht/_/add?url=${url}&title=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://ln.ht/_/add?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`, '_blank'); })();"
 		);
 		this.share(
 			'.hackernews',
-			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://news.ycombinator.com/submitlink?u=${url}&t=${title}`, '_blank'); })();"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://news.ycombinator.com/submitlink?u=${encodeURIComponent(url)}&t=${encodeURIComponent(title)}`, '_blank'); })();"
 		);
 		this.share(
 			'.tildes',
@@ -139,12 +144,12 @@ class SocialShare extends HTMLElement {
 		);
 		this.share(
 			'.whatsapp',
-			 "javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://api.whatsapp.com/send?text=${title}%20${url}`, '_blank'); })()"
+			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://api.whatsapp.com/send?text=${title}%20${url}`, '_blank'); })()"
 		);
 		this.share(
 			'.telegram',
 			"javascript:(async () => {const title = document.getElementById('title').value; const url = document.getElementById('url').value; window.open(`https://t.me/share/url?url=${url}&text=${title}`, '_blank'); })()"
-		)
+		);
 		this.share(
 			'.tiktok',
 			"javascript:(async () => {const url = document.getElementById('url').value; window.open(`https://www.tiktok.com/upload/?url=${url}`, '_blank'); })()"
@@ -231,4 +236,3 @@ class SocialShare extends HTMLElement {
 }
 
 customElements.define('social-share', SocialShare);
-
