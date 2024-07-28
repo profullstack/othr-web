@@ -1,7 +1,12 @@
+.vscode
 build
 node_modules
 package-lock.json
+pnpm-lock.yaml
 .env.local
 .env.local.bat
+.env.dev
+.env.prod
 data/
 history.txt
+service_account_key.json

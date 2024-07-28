@@ -31,7 +31,7 @@
 		const res = await fetch('/api/nostr/signup', {
 			method: 'POST',
 			headers: {
-				'content-type': 'application/json',
+				'content-type': 'application/json'
 			},
 			body: JSON.stringify(profile)
 		});
@@ -41,6 +41,10 @@
 		window.location.href = '/dashboard';
 	}
 </script>
+
+<svelte:head>
+	<title>Login</title>
+</svelte:head>
 
 <section>
 	<h1>Login</h1>
