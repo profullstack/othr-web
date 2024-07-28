@@ -46,8 +46,7 @@ export default {
 			paths: [
 				'pages/app.html',
 				'static/manifest.json',
-				'components/MetaTags.svelte',
-				'components/Index.svelte'
+				'components/index.hbs'
 			],
 			mapper: (contents) =>
 				contents
