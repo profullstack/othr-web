@@ -1,5 +1,7 @@
 # Fastest-Engineer-Web: URL Shortener
 
+[![Crypto Payment](https://paybadge.profullstack.com/badge.svg)](https://paybadge.profullstack.com/?tickers=btc%2Ceth%2Csol%2Cusdc)
+
 Fastest-Engineer-Web: Ship your SaaS in days, not months. Start building and working on the features that matter and get to market quicker. Save weeks of work by using a ready made SAAS boilerplate.
 
 ![GitHub](https://img.shields.io/github/license/profullstack/hynt-web)
