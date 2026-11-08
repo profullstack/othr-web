@@ -104,7 +104,7 @@ class SocialShare extends HTMLElement {
 
 		this.share(
 			'.brisk-news',
-			"javascript:(async () => { const url = document.getElementById('url').value; window.open(`https://brisk.news?url=${url}`, '_blank'); })();"
+			"javascript:(async () => { const url = document.getElementById('url').value; window.open(`https://brisk.pwa.pit.world?url=${url}`, '_blank'); })();"
 		);
 		this.share(
 			'.stacker-news',
